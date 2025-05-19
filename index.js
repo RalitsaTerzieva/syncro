@@ -11,9 +11,12 @@ document.getElementById("addBtn").addEventListener("click", async () => {
   const text = input.value.trim();
   if (!text) return;
 
-  await addTask(text);
-  input.value = "";
-
-  const tasks = await fetchTasks();
-  renderTasks(tasks);
+  try {
+    await addTask(text);
+    input.value = "";
+    const tasks = await fetchTasks();
+    renderTasks(tasks);
+  } catch (error) {
+    alert("Error: " + error.message);
+  }
 });
