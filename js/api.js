@@ -1,12 +1,12 @@
-import { API_URL } from "../config";
+import { API_URL } from "../config.js";
 
-export async function getTasks() {
+export async function fetchTasks() {
   const res = await fetch(API_URL);
   return res.json();
 }
 
 export async function addTask(text) {
-  await fetch(API_URL, {
+  const res = await fetch(API_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ text }),
